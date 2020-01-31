@@ -1,0 +1,17 @@
+.todo-list-item-container {
+    margin: 1rem;
+    padding: 0.5rem;
+    border-color: aquamarine;
+    border-width: 1px;
+    border-style: solid;
+}
+
+h1 {
+    display: inline;
+}
+
+.todo-list-item-delete {
+    color: red;
+    cursor: pointer;
+    float: right;
+}
