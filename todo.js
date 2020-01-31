@@ -2,8 +2,11 @@
 let todoList;
 
 /* Functions */
-function deleteTodoListItem(todoListItemTimestamp) {
+function removeFromArrayByIndex(array, index) {
+    return array.slice(0, index).concat(array.slice(index+1, array.length));
+}
 
+function deleteTodoListItem(todoListItemTimestamp) {
     // remove the todo list item from the todoList array
     let todoListItemToDelete;
     todoList.forEach((todoListItem) => {
@@ -13,9 +16,7 @@ function deleteTodoListItem(todoListItemTimestamp) {
     });
     if (todoListItemToDelete) {
         const indexToRemove = todoList.indexOf(todoListItemToDelete);
-        console.log(indexToRemove);
-        todoList = todoList.slice(0, indexToRemove).concat(todoList.slice(indexToRemove+1, todoList.length));
-        console.log(todoList);
+        todoList = removeFromArrayByIndex(todoList, indexToRemove);
     }
 
     // Remove the todo list item from the page
@@ -30,10 +31,8 @@ function handleDelete(event) {
 
 function handleAdd(event) {
     event.preventDefault();
-    console.log('adding', event.target);
     const todoListInputBox = document.querySelector('#todo-list-input');
     const newTodoListItemText = todoListInputBox.value;
-    console.log(newTodoListItemText)
     if (newTodoListItemText) {
         todoList.push({text: newTodoListItemText, timestamp: Date.now().toString()});
     }
