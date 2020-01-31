@@ -28,6 +28,17 @@ function handleDelete(event) {
     deleteTodoListItem(todoListItemTimestamp);
 }
 
+function handleAdd(event) {
+    event.preventDefault();
+    console.log('adding', event.target);
+    const todoListInputBox = document.querySelector('#todo-list-input');
+    const newTodoListItemText = todoListInputBox.value;
+    console.log(newTodoListItemText)
+    if (newTodoListItemText) {
+        todoList.push({text: newTodoListItemText, timestamp: Date.now().toString()});
+    }
+}
+
 /* Wait for DOM content to load */
 document.addEventListener('DOMContentLoaded', () => {
     // Create todo list items
@@ -65,5 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
     todoListItemDeleteIcons.forEach((el) => {
         el.addEventListener("click", handleDelete);
     });
+
+    // Hook up the input box and add button
+    const todoListAddButton = document.querySelector('#todo-list-add-button');
+    todoListAddButton.addEventListener("click", handleAdd);
   })
 
