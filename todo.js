@@ -22,7 +22,7 @@ function renderTodoList() {
             <section class="todo-list-item-container">
                 <h1 data-timestamp="${todoListItem.timestamp}">${todoListItem.text}</h1>
                 <section class="todo-list-item-delete">
-                X
+                🗑️
                 </section>
             </section>`;
         finalTodoListHTML.innerHTML += (todoListItemHTML);
@@ -51,15 +51,16 @@ function deleteTodoListItem(todoListItemTimestamp) {
         const indexToRemove = todoList.indexOf(todoListItemToDelete);
         todoList = removeFromArrayByIndex(todoList, indexToRemove);
     }
-
-    // Remove the todo list item from the page
-    const selectedToDoListItem = document.querySelector(`[data-timestamp="${todoListItemTimestamp}"]`).parentElement;
-    selectedToDoListItem.parentNode.removeChild(selectedToDoListItem);
 }
 
 function handleDelete(event) {
     const todoListItemTimestamp = event.target.previousElementSibling.dataset.timestamp;
     deleteTodoListItem(todoListItemTimestamp);
+    if (todoList && todoList.length && todoList.length > 0) {
+        renderTodoList();
+    } else {
+        renderCallToAction();
+    }
 }
 
 function handleAdd(event) {
@@ -94,19 +95,21 @@ function handleKeyUp(event) {
     }
 }
 
+function renderCallToAction() {
+    const todoListContainer = document.querySelector("#todo-list-container");
+    todoListContainer.innerHTML = '<p>Create some todos 👍<p>'
+}
+
 /* Wait for DOM content to load */
 document.addEventListener('DOMContentLoaded', () => {
     // Create todo list items
-    todoList = [
-        { text: 'Wash the car', timestamp: '1580419503630' },
-        { text: 'Feed the cat', timestamp: '1580419538130' },
-        { text: 'Go to work', timestamp: '1580419538140' },
-        { text: 'Eat pizza', timestamp: '1580419538150' },
-        { text: 'Learn to fly', timestamp: '1580419538160' },
-        { text: 'Read a book', timestamp: '1580419538170' },
-    ];
+    todoList = [];
 
-    renderTodoList();
+    if (todoList && todoList.length && todoList.length > 0) {
+        renderTodoList();
+    } else {
+        renderCallToAction();
+    }
     hookupDeleteButtons();
 
     // Hook up the input box and add button
