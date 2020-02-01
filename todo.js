@@ -72,6 +72,7 @@ function handleAdd(event) {
     }
     const form = event.target.parentElement;
     form.reset();
+    todoListAddButton.disabled = true;
 }
 
 function hookupDeleteButtons() {
