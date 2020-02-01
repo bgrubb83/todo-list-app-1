@@ -86,7 +86,6 @@ function hookupDeleteButtons() {
 
 function handleKeyUp(event) {
     const newTodoListItemText = todoListInputBox.value;
-    console.log(newTodoListItemText);
     if (!newTodoListItemText ||
         newTodoListItemText.length && newTodoListItemText.length < 1) {
         todoListAddButton.disabled = true;
