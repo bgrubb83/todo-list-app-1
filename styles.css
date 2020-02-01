@@ -2,9 +2,14 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding: 0.5rem;
-    border-color: tomato;
-    border-width: 1px;
-    border-style: solid;
+    outline-color: tomato;
+    outline-width: 1px;
+    outline-style: solid;
+    
+}
+
+.todo-list-item-container:hover {
+    outline-width: 2px;
 }
 
 h1 {
