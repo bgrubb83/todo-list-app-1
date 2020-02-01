@@ -5,7 +5,7 @@
     outline-color: tomato;
     outline-width: 1px;
     outline-style: solid;
-    
+    outline-offset: -1px;
 }
 
 .todo-list-item-container:hover {
@@ -13,7 +13,8 @@
 }
 
 h1 {
-    font-size: 1.5rem;
+    font-size: 1rem;
+    line-height: 2rem;
     font-weight: 100;
     display: inline;
     color: tomato;
@@ -21,7 +22,7 @@ h1 {
 }
 
 p {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 100;
     color: tomato;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -34,7 +35,7 @@ p {
 }
 
 #todo-list-add-button {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 100;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border: none;
@@ -64,7 +65,7 @@ p {
 }
 
 #todo-list-input {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 100;
     border-color: tomato;
     border-style: solid;
@@ -79,5 +80,31 @@ p {
 }
 
 .todo-list-item-delete:hover {
-    transform: rotate(10deg);
+    transform: scale(1.5, 1.5);
+}
+
+footer {
+    background-color: white;
+    padding: 0.5rem;
+    font-weight: 100;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: tomato;
+    font-size: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 2rem);
+    text-align: center;
+}
+
+a {
+    color: tomato;
+}
+
+a:visited {
+    color: tomato;
+}
+
+#spacer {
+    background-color: white;
+    height: 2rem;
 }

@@ -22,11 +22,13 @@ function renderTodoList() {
             <section class="todo-list-item-container">
                 <h1 data-timestamp="${todoListItem.timestamp}">${todoListItem.text}</h1>
                 <section class="todo-list-item-delete">
-                🗑️
+                👍
                 </section>
             </section>`;
         finalTodoListHTML.innerHTML += (todoListItemHTML);
     });
+
+    finalTodoListHTML.innerHTML += '<section id="spacer"></section>'
 
     // Apppend the todo list items
     todoListContainer.appendChild(finalTodoListHTML);
