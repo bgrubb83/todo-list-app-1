@@ -82,6 +82,20 @@ function hookupDeleteButtons() {
     });
 }
 
+function handleKeyUp(event) {
+    const todoListInputBox = document.querySelector('#todo-list-input');
+    const newTodoListItemText = todoListInputBox.value;
+    console.log(newTodoListItemText);
+    if (!newTodoListItemText ||
+        newTodoListItemText.length && newTodoListItemText.length < 1) {
+        const todoListAddButton = document.querySelector('#todo-list-add-button');
+        todoListAddButton.disabled = true;
+    } else {
+        const todoListAddButton = document.querySelector('#todo-list-add-button');
+        todoListAddButton.disabled = false;
+    }
+}
+
 /* Wait for DOM content to load */
 document.addEventListener('DOMContentLoaded', () => {
     // Create todo list items
@@ -98,7 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
     hookupDeleteButtons();
 
     // Hook up the input box and add button
+    const todoListInputBox = document.querySelector('#todo-list-input');
+    todoListInputBox.addEventListener("keyup", handleKeyUp)
     const todoListAddButton = document.querySelector('#todo-list-add-button');
     todoListAddButton.addEventListener("click", handleAdd);
+    todoListAddButton.disabled = true;
 })
 
