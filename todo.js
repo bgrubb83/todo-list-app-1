@@ -1,5 +1,7 @@
 /* Variables */
 let todoList;
+let todoListInputBox;
+let todoListAddButton;
 
 /* Functions */
 function clearTodoList() {
@@ -62,7 +64,6 @@ function handleDelete(event) {
 
 function handleAdd(event) {
     event.preventDefault();
-    const todoListInputBox = document.querySelector('#todo-list-input');
     const newTodoListItemText = todoListInputBox.value;
     if (newTodoListItemText) {
         todoList.push({ text: newTodoListItemText, timestamp: Date.now().toString() });
@@ -83,15 +84,12 @@ function hookupDeleteButtons() {
 }
 
 function handleKeyUp(event) {
-    const todoListInputBox = document.querySelector('#todo-list-input');
     const newTodoListItemText = todoListInputBox.value;
     console.log(newTodoListItemText);
     if (!newTodoListItemText ||
         newTodoListItemText.length && newTodoListItemText.length < 1) {
-        const todoListAddButton = document.querySelector('#todo-list-add-button');
         todoListAddButton.disabled = true;
     } else {
-        const todoListAddButton = document.querySelector('#todo-list-add-button');
         todoListAddButton.disabled = false;
     }
 }
@@ -112,9 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
     hookupDeleteButtons();
 
     // Hook up the input box and add button
-    const todoListInputBox = document.querySelector('#todo-list-input');
+    todoListInputBox = document.querySelector('#todo-list-input');
     todoListInputBox.addEventListener("keyup", handleKeyUp)
-    const todoListAddButton = document.querySelector('#todo-list-add-button');
+    todoListAddButton = document.querySelector('#todo-list-add-button');
     todoListAddButton.addEventListener("click", handleAdd);
     todoListAddButton.disabled = true;
 })
