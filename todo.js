@@ -58,6 +58,11 @@ function deleteTodoListItem(todoListItemTimestamp) {
 function handleDelete(event) {
     const todoListItemTimestamp = event.target.previousElementSibling.dataset.timestamp;
     deleteTodoListItem(todoListItemTimestamp);
+
+    // set localStorage
+    localStorage.setItem('todoList', JSON.stringify(todoList));
+
+    // re-render
     if (todoList && todoList.length && todoList.length > 0) {
         renderTodoList();
     } else {
@@ -72,8 +77,15 @@ function handleAdd(event) {
         todoList.push({ text: newTodoListItemText, timestamp: Date.now().toString() });
         renderTodoList();
     }
+
+    // set local storage
+    localStorage.setItem('todoList', JSON.stringify(todoList));
+
+    // reset form
     const form = event.target.parentElement;
     form.reset();
+
+    // disable add button
     todoListAddButton.disabled = true;
 }
 
@@ -88,7 +100,10 @@ function hookupDeleteButtons() {
 }
 
 function handleKeyUp(event) {
+    // get todo text
     const newTodoListItemText = todoListInputBox.value;
+
+    // handle disabling of button if there is no text
     if (!newTodoListItemText ||
         newTodoListItemText.length && newTodoListItemText.length < 1) {
         todoListAddButton.disabled = true;
@@ -102,11 +117,18 @@ function renderCallToAction() {
     todoListContainer.innerHTML = '<p>Create some todos 👍<p>'
 }
 
-/* Wait for DOM content to load */
+/* Entry point: Wait for DOM content to load */
 document.addEventListener('DOMContentLoaded', () => {
     // Create todo list items
     todoList = [];
 
+    // see if there are any stored todos
+    const storedTodos = localStorage.getItem('todoList');
+    if (storedTodos) {
+        todoList = JSON.parse(storedTodos);
+    }
+
+    // either render the todos, or the CTA
     if (todoList && todoList.length && todoList.length > 0) {
         renderTodoList();
     } else {
