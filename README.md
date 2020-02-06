@@ -11,3 +11,9 @@ The humble todo list app has become a bit of a joke or cliché in the dev commun
 - DOM manipulation
 - localStorage
 - GitHub Pages Hosting
+
+## Hosted version
+
+Hosted on GitHub Pages.
+
+[🔗 Check out the hosted version here](https://bgrubb83.github.io/todo-list-app-1/)
