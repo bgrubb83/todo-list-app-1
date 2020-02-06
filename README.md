@@ -6,7 +6,8 @@ The humble todo list app has become a bit of a joke or cliché in the dev commun
 
 ## Learning intentions of this particular todo list app
                 
-- Vanilla JavaScript (ES6)
+- Vanilla JavaScript
+- ECMAScript 6
 - Event handling
 - DOM manipulation
 - localStorage
